@@ -28,6 +28,25 @@ void duplicateMatrix(int col, int n, vector<vector<int>>& matrix) {
         
     }
 };
+
+// Time Complexity: O(N*N)
+// Space Complexity: O(1)
+
+class Solution1 {
+public:
+    void rotate(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        for(int i = 0; i < n-1; i++) {
+            for(int j = i + 1; j < n; j++) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
+        }
+        // now just reverse it
+        for(int i = 0; i < n; i++) {
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
+    }
+};
 int main() {
     vector<vector<int>> matrix = {
         {1, 2, 3},
@@ -36,6 +55,14 @@ int main() {
     };
     Solution sol;
     sol.rotate(matrix);
+    for (const auto& row : matrix) {
+        for (const auto& val : row) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+    Solution1 sol1;
+    sol1.rotate(matrix);
     for (const auto& row : matrix) {
         for (const auto& val : row) {
             cout << val << " ";
