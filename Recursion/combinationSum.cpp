@@ -9,7 +9,7 @@ void f(int idx, int target, vector<int>& candidates) {
     if(target == 0) {
         vector<int> check = temp;
         sort(check.begin(), check.end());
-        ans.insert(temp);
+        ans.insert(check);
         return;
     }
     temp.push_back(candidates[idx]);
