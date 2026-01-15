@@ -1,15 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
+// Time Complexity : O(2^n)
+// Space Complexity : O(target)
 class Solution {
 public:
-set<vector<int>> ans;
+vector<vector<int>> ans;
 vector<int> temp;
 void f(int idx, int target, vector<int>& candidates) {
     if(idx == candidates.size() || target < 0) return;
     if(target == 0) {
-        vector<int> check = temp;
-        sort(check.begin(), check.end());
-        ans.insert(check);
+        ans.push_back(temp);
         return;
     }
     temp.push_back(candidates[idx]);
@@ -20,12 +20,12 @@ void f(int idx, int target, vector<int>& candidates) {
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
         // f(idx, set<vector<int> ans, vector<int>temp, target, vector<vector<int>>candidates)
         f(0, target, candidates);
-        return vector<vector<int>>(ans.begin(), ans.end());
+        return ans;
     }
 };
 int main() {
     Solution s;
-    vector<int> candidates = {10,1,2,7,6,1,5};
+    vector<int> candidates = {2, 3, 6, 7};
     int target = 8;
     vector<vector<int>> result = s.combinationSum(candidates, target);
     for (const auto& combination : result) {
