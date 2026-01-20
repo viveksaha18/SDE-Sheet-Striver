@@ -7,6 +7,9 @@ public:
         return pow(x, n);
     }
 };
+// Solution2 using recursion
+// Time Complexity: O(log n)
+// Space Complexity: O(log n) due to recursion stack
 class Solution1 {
     public:
     double f(double x, long n) {
